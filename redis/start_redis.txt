@@ -1,0 +1,6 @@
+sudo docker network create dev_nw
+sudo docker run --net dev_nw -d --name redis-dev -p 6379:6379  redis
+sudo docker run -it --rm --net dev_nw redis redis-cli -h redis-dev ping
+sudo docker run -it --network dev_nw --rm redis redis-cli -h redis-dev
+sudo docker stop /redis-dev
+sudo docker rm /redis-dev
